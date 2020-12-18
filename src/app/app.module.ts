@@ -6,10 +6,11 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import {MustMatchDirective} from './helpers/must-match.directive';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MustMatchDirective
   ],
   imports: [
     BrowserModule,

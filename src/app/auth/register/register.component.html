@@ -1,0 +1,70 @@
+<div id="wrapper">
+  <div class="vertical-align-wrap">
+    <div class="vertical-align-middle auth-main">
+      <div class="auth-box">
+        <div class="top">
+          <img src="assets/images/logo-white.svg" alt="Lucid">
+        </div>
+        <div class="card">
+          <div class="header">
+            <p class="lead">Create an account</p>
+          </div>
+          <div class="body">
+            <form class="form-auth-small" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+              <div class="form-group">
+                <label for="name" class="control-label sr-only">Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="name" name="name"
+                       placeholder="Name"
+                       #name="ngModel"
+                       [ngClass]="{'parsley-error':!name.valid && (name.touched || f.submitted)}"
+                       ngModel required>
+                <ul class="parsley-errors-list filled" *ngIf="!name.valid && (name.touched || f.submitted)">
+                  <li class="parsley-required" *ngIf="name.hasError('required')">Enter a valid name.</li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="email" class="control-label sr-only">Email</label>
+                <input type="email"
+                       class="form-control"
+                       id="email" name="email"
+                       placeholder="Email"
+                       #email="ngModel"
+                       [ngClass]="{'parsley-error':!email.valid && (email.touched || f.submitted)}"
+                       ngModel required email>
+                <ul class="parsley-errors-list filled" *ngIf="!email.valid && (email.touched || f.submitted)">
+                  <li class="parsley-required" *ngIf="email.hasError('required')">Enter a valid email address.</li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="password" class="control-label sr-only">Password</label>
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       placeholder="Password"
+                       name="password"
+                       #password="ngModel"
+                       [ngClass]="{'parsley-error':!password.valid && (password.touched || f.submitted)}"
+                       ngModel required>
+                <ul class="parsley-errors-list filled" *ngIf="!password.valid && (password.touched || f.submitted)">
+                  <li class="parsley-required" *ngIf="password.hasError('required')">Password is required.</li>
+                </ul>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>
+              <div class="bottom">
+                <span class="helper-text">Already have an account? <a [routerLink]="['/auth/login']">Login</a></span>
+              </div>
+            </form>
+            <div class="separator-linethrough"><span>OR</span></div>
+            <button class="btn btn-signin-social"><i class="fa fa-facebook-official facebook-color"></i> Sign in with
+              Facebook
+            </button>
+            <button class="btn btn-signin-social"><i class="fa fa-twitter twitter-color"></i> Sign in with Twitter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
