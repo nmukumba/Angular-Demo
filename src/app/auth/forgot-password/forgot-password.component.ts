@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -8,13 +9,14 @@ import {Router} from '@angular/router';
 })
 export class ForgotPasswordComponent implements OnInit {
 
+  @ViewChild('f') forgotPasswordForm!: NgForm;
   constructor(private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
+  onSubmit(form: NgForm): void {
     this.router.navigate(['/auth/login']);
   }
 }

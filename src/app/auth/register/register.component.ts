@@ -10,8 +10,8 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('f', { static: true }) loginForm: NgForm | undefined;
-  constructor(private router: Router, private toastr: ToastrService) {
+  @ViewChild('f') registerForm!: NgForm;
+  constructor(private router: Router, private toastr: ToastrService, private authService: AuthService) {
   }
 
   ngOnInit(): void {

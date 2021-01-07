@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +10,14 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  @ViewChild('f') loginForm!: NgForm;
+  constructor(private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
-  onSubmit(): void{
+  onSubmit(form: NgForm): void{
+    console.log(this.loginForm?.value.email);
+    this.toastr.success('Looks Good: ' + this.loginForm.value.email, 'Success');
     this.router.navigate(['/admin/dashboard']);
   }
 }
