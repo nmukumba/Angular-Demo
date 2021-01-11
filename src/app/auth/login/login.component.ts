@@ -11,11 +11,14 @@ import {ToastrService} from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   @ViewChild('f') loginForm!: NgForm;
-  constructor(private router: Router, private toastr: ToastrService) { }
+
+  constructor(private router: Router, private toastr: ToastrService) {
+  }
 
   ngOnInit(): void {
   }
-  onSubmit(form: NgForm): void{
+
+  onSubmit(form: NgForm): void {
     console.log(this.loginForm?.value.email);
     this.toastr.success('Looks Good: ' + this.loginForm.value.email, 'Success');
     this.router.navigate(['/admin/dashboard']);
