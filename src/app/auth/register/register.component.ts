@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import {NgForm} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -11,7 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class RegisterComponent implements OnInit {
   @ViewChild('f') registerForm!: NgForm;
-  constructor(private router: Router, private toastr: ToastrService, private authService: AuthService) {
+  constructor(private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
