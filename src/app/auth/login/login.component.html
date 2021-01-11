@@ -17,6 +17,7 @@
                        class="form-control"
                        id="email" name="email"
                        placeholder="Email"
+                       appEmailValidator
                        #email="ngModel"
                        [ngClass]="{'parsley-error':!email.valid && (email.touched || f.submitted)}"
                        ngModel required email>
