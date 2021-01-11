@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthComponent} from './auth/auth.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {RegisterComponent} from './register/register.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'login' },
       { path: 'login', component: LoginComponent, data: { title: 'Angular Demo | Login' } },
       { path: 'forgot-password', component: ForgotPasswordComponent, data: { title: 'Angular Demo | Forgot Password' } },
+      { path: 'rest-password', component: ResetPasswordComponent, data: { title: 'Angular Demo | Reset Password' } },
       { path: 'register', component: RegisterComponent, data: { title: 'Angular Demo | Register a New Account' } },
     ]
   }

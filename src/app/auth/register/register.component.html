@@ -30,11 +30,13 @@
                        class="form-control"
                        id="email" name="email"
                        placeholder="Email"
+                       appEmailValidator
                        #email="ngModel"
                        [ngClass]="{'parsley-error':!email.valid && (email.touched || f.submitted)}"
                        ngModel required email>
                 <ul class="parsley-errors-list filled" *ngIf="!email.valid && (email.touched || f.submitted)">
-                  <li class="parsley-required" *ngIf="email.hasError('required')">Enter a valid email address.</li>
+                  <li class="parsley-required" *ngIf="email.hasError('required')">Enter an email address.</li>
+                  <li class="parsley-required" *ngIf="email.hasError('emailValidator')">Enter a valid email address.</li>
                 </ul>
               </div>
               <div class="form-group">
@@ -49,6 +51,21 @@
                        ngModel required>
                 <ul class="parsley-errors-list filled" *ngIf="!password.valid && (password.touched || f.submitted)">
                   <li class="parsley-required" *ngIf="password.hasError('required')">Password is required.</li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword" class="control-label sr-only">Password</label>
+                <input type="password"
+                       class="form-control"
+                       id="confirmPassword" name="confirmPassword"
+                       placeholder="Confirm Password"
+                       appPasswordValidator="password"
+                       #confirmPassword="ngModel"
+                       [ngClass]="{'parsley-error':!confirmPassword.valid && (confirmPassword.touched || f.submitted)}"
+                       ngModel required>
+                <ul class="parsley-errors-list filled" *ngIf="!confirmPassword.valid && (confirmPassword.touched || f.submitted)">
+                  <li class="parsley-required" *ngIf="confirmPassword.hasError('required')">Enter a valid password.</li>
+                  <li class="parsley-required" *ngIf="confirmPassword.hasError('passwordMatchError')">Passwords Don't Match.</li>
                 </ul>
               </div>
               <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>
