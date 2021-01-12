@@ -22,7 +22,8 @@
                        [ngClass]="{'parsley-error':!email.valid && (email.touched || f.submitted)}"
                        ngModel required email>
                 <ul class="parsley-errors-list filled" *ngIf="!email.valid && (email.touched || f.submitted)">
-                  <li class="parsley-required" *ngIf="email.hasError('required')">Enter a valid email address.</li>
+                  <li class="parsley-required" *ngIf="email.hasError('required')">Enter an email address.</li>
+                  <li class="parsley-required" *ngIf="email.hasError('emailValidator')">Enter a valid email address.</li>
                 </ul>
               </div>
               <div class="form-group">

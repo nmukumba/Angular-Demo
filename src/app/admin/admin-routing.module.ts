@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {UserComponent} from './users/user/user.component';
+import {AddUserComponent} from './users/add-user/add-user.component';
+import {EditUserComponent} from './users/edit-user/edit-user.component';
+import {UsersComponent} from './users/users/users.component';
 
 
 const routes: Routes = [
@@ -13,15 +17,25 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard' },
       { path: 'dashboard', component: DashboardComponent, data: { title: 'Booking System | Dashboard' } },
       // {
-      //   path: 'clients',
+      //   path: 'users',
       //   children: [
       //     { path: '', redirectTo: 'all', pathMatch: 'full' },
-      //     { path: 'all', component: ClientsComponent, data: { title: 'Booking System | Clients' } },
-      //     { path: 'add', component: AddClientComponent, data: { title: 'Booking System | Add Client' } },
-      //     { path: 'edit/:id', component: EditClientComponent, data: { title: 'Booking System | Edit Client' } },
-      //     { path: 'view/:id', component: ViewClientComponent, data: { title: 'Booking System | View Client' } },
+      //     { path: 'all', component: UsersComponent, data: { title: 'Angular Demo | Users' } },
+      //     { path: 'add', component: AddUserComponent, data: { title: 'Angular Demo | Add User' } },
+      //     { path: 'edit/:id', component: EditUserComponent, data: { title: 'Angular Demo | Edit User' } },
+      //     { path: 'user/:id', component: UserComponent, data: { title: 'Angular Demo  | View User' } },
       //   ]
-      // }
+      // },
+      {
+        path: 'users',
+        children: [
+          { path: '', redirectTo: 'all', pathMatch: 'full' },
+          { path: 'all', component: UsersComponent, data: { title: 'Booking System | Users' } },
+          { path: 'add', component: AddUserComponent, data: { title: 'Booking System | Add User' } },
+          { path: 'edit/:id', component: EditUserComponent, data: { title: 'Booking System | Edit User' } },
+          { path: 'user/:id', component: UserComponent, data: { title: 'Booking System | My Profile' } },
+        ]
+      }
     ]
   }
 ];
