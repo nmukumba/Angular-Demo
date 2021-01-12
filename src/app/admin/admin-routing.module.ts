@@ -7,6 +7,7 @@ import {UserComponent} from './users/user/user.component';
 import {AddUserComponent} from './users/add-user/add-user.component';
 import {EditUserComponent} from './users/edit-user/edit-user.component';
 import {UsersComponent} from './users/users/users.component';
+import {ProfileComponent} from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -15,25 +16,16 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', redirectTo: 'dashboard' },
-      { path: 'dashboard', component: DashboardComponent, data: { title: 'Booking System | Dashboard' } },
-      // {
-      //   path: 'users',
-      //   children: [
-      //     { path: '', redirectTo: 'all', pathMatch: 'full' },
-      //     { path: 'all', component: UsersComponent, data: { title: 'Angular Demo | Users' } },
-      //     { path: 'add', component: AddUserComponent, data: { title: 'Angular Demo | Add User' } },
-      //     { path: 'edit/:id', component: EditUserComponent, data: { title: 'Angular Demo | Edit User' } },
-      //     { path: 'user/:id', component: UserComponent, data: { title: 'Angular Demo  | View User' } },
-      //   ]
-      // },
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Angular Demo | Dashboard' } },
       {
         path: 'users',
         children: [
           { path: '', redirectTo: 'all', pathMatch: 'full' },
-          { path: 'all', component: UsersComponent, data: { title: 'Booking System | Users' } },
-          { path: 'add', component: AddUserComponent, data: { title: 'Booking System | Add User' } },
-          { path: 'edit/:id', component: EditUserComponent, data: { title: 'Booking System | Edit User' } },
-          { path: 'user/:id', component: UserComponent, data: { title: 'Booking System | My Profile' } },
+          { path: 'all', component: UsersComponent, data: { title: 'Angular Demo | Users' } },
+          { path: 'add', component: AddUserComponent, data: { title: 'Angular Demo | Add User' } },
+          { path: 'edit/:id', component: EditUserComponent, data: { title: 'Angular Demo | Edit User' } },
+          { path: 'user/:id', component: UserComponent, data: { title: 'Angular Demo | View User' } },
+          { path: 'profile', component: ProfileComponent, data: { title: 'Angular Demo| My Profile' } },
         ]
       }
     ]
