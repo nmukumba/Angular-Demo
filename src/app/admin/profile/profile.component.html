@@ -1,0 +1,104 @@
+<div class="container-fluid" profilepage_2 blog-page>
+
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"
+               (click)="toggleFullWidth()">
+          <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+          <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+        </a> My Profile</h2>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/admin']"><i class="icon-home"></i></a></li>
+          <li class="breadcrumb-item active">My Profile</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-lg-4 col-md-12">
+      <div class="card profile-header">
+        <div class="body">
+          <!-- <div class="profile-image">
+            <img src="assets/images/user.png" class="rounded-circle" alt="">
+          </div>
+          <button class="btn btn-primary">Change Avatar</button> -->
+          <div class="text-center">
+            <h4 class="m-b-0"><strong></strong></h4>
+          </div>
+          <br>
+          <ul class=" list-unstyled basic-list">
+            <li><i class="fa fa-envelope-o m-r-5"></i>
+            </li>
+            <li><i class="icon-tag m-r-5"></i><li>
+          </ul>
+          <!-- <div class="m-t-15">
+            <button class="btn btn-primary mr-1">Follow</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-12">
+
+      <div class="card">
+        <div class="body">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 offset-md-3">
+              <form class="form-auth-small" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+                <div class="form-group">
+                  <label for="currentPassword" class="control-label sr-only">Current Password</label>
+                  <input type="password"
+                         class="form-control"
+                         id="currentPassword"
+                         placeholder="Current Password"
+                         name="currentPassword"
+                         #currentPassword="ngModel"
+                         [ngClass]="{'parsley-error':!currentPassword.valid && (currentPassword.touched || f.submitted)}"
+                         ngModel required>
+                  <ul class="parsley-errors-list filled" *ngIf="!currentPassword.valid && (currentPassword.touched || f.submitted)">
+                    <li class="parsley-required" *ngIf="currentPassword.hasError('required')">Password is required.</li>
+                  </ul>
+                </div>
+                <div class="form-group">
+                  <label for="newPassword" class="control-label sr-only">New Password</label>
+                  <input type="password"
+                         class="form-control"
+                         id="newPassword"
+                         placeholder="New Password"
+                         name="newPassword"
+                         #newPassword="ngModel"
+                         [ngClass]="{'parsley-error':!newPassword.valid && (newPassword.touched || f.submitted)}"
+                         ngModel required>
+                  <ul class="parsley-errors-list filled" *ngIf="!newPassword.valid && (newPassword.touched || f.submitted)">
+                    <li class="parsley-required" *ngIf="newPassword.hasError('required')">Password is required.</li>
+                  </ul>
+                </div>
+                <div class="form-group">
+                  <label for="confirmPassword" class="control-label sr-only">Confirm Password</label>
+                  <input type="password"
+                         class="form-control"
+                         id="confirmPassword"
+                         placeholder="Confirm Password"
+                         name="confirmPassword"
+                         appPasswordValidator="password"
+                         #confirmPassword="ngModel"
+                         [ngClass]="{'parsley-error':!confirmPassword.valid && (confirmPassword.touched || f.submitted)}"
+                         ngModel required>
+                  <ul class="parsley-errors-list filled" *ngIf="!confirmPassword.valid && (confirmPassword.touched || f.submitted)">
+                    <li class="parsley-required" *ngIf="confirmPassword.hasError('required')">Password is required.</li>
+                    <li class="parsley-required" *ngIf="confirmPassword.hasError('passwordMatchError')">Passwords Don't Match.</li>
+                  </ul>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Change Password</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
