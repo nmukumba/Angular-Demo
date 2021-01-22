@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,14 @@ export class AuthService {
   public currentUser: Observable<any>;
   httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': 'true'
+      'Access-Control-Allow-Origin': 'true',
+      'Content-Type' : 'application/json'
     })
   };
 
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cookieService: CookieService) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') as string));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -28,7 +30,24 @@ export class AuthService {
   }
 
   login(user: any): Observable<any> {
-    return this.http.post<any>(this.url + '/login', user, this.httpOptions)
+    return this.http.post<any>(this.url + '/auth/login', user, this.httpOptions)
+      .pipe(map(response => {
+        console.log(response.status);
+        // login successful if there's a jwt token in the response
+        if (response.status === 200) {
+          this.cookieService.set('token', response.token, {expires: 4});
+          this.cookieService.set('userId', response.token, {expires: 4});
+
+          return {status: true, message: 'You have successfully logged in.'};
+        } else {
+          return {status: false, message: response.message};
+        }
+
+      }));
+  }
+
+  register(user: any): Observable<any> {
+    return this.http.post<any>(this.url + '/auth/register', user, this.httpOptions)
       .pipe(map(response => {
         console.log(response);
         // login successful if there's a jwt token in the response
@@ -48,7 +67,7 @@ export class AuthService {
   // tslint:disable-next-line:typedef
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    this.cookieService.delete('token');
     this.currentUserSubject.next(null);
 
   }

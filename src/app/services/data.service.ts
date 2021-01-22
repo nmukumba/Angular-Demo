@@ -15,7 +15,8 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + this.user.token,
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type' : 'application/json'
     })
   };
 
